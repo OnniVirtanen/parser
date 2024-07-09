@@ -4,8 +4,8 @@
 
 **example code in calculator.fin**
 
-```
-fun sum(a, b): int {
+```js
+fun sum(a: int, b: int): int {
     return a + b;
 }
 
@@ -19,8 +19,12 @@ KeywordToken{keywordType=FUNCTION}
 IdentifierToken{value='sum'}
 SeparatorToken{separatorType=LEFT_PARENTHESIS}
 IdentifierToken{value='a'}
+SeparatorToken{separatorType=COLON}
+KeywordToken{keywordType=INT}
 SeparatorToken{separatorType=COMMA}
 IdentifierToken{value='b'}
+SeparatorToken{separatorType=COLON}
+KeywordToken{keywordType=INT}
 SeparatorToken{separatorType=RIGHT_PARENTHESIS}
 SeparatorToken{separatorType=COLON}
 KeywordToken{keywordType=INT}
