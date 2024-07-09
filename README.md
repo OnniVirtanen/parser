@@ -4,7 +4,7 @@
 
 **example code in calculator.fin**
 
-```js
+```c
 fun sum(a: int, b: int): int {
     return a + b;
 }
