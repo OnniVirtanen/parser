@@ -1,5 +1,7 @@
 # parser
 
+A simple toy project to learn lexing and parsing.
+
 ## lexer
 
 **example code in calculator.fin**
