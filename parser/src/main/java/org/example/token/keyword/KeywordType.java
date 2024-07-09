@@ -5,14 +5,14 @@ import org.example.token.InnerTokenType;
 public enum KeywordType implements InnerTokenType<KeywordType> {
     IF(0, "if"),
     ELSE(1, "else"),
-    SWITCH(2, "switch"),
-    WHILE(3, "while"),
-    DO(4, "do"),
-    FOR(5, "for"),
-    INT(6, "int"),
-    FLOAT(7, "float"),
-    BOOLEAN(8, "boolean"),
-    CHAR(9, "char");
+    WHILE(2, "while"),
+    INT(3, "int"),
+    FLOAT(4, "float"),
+    BOOLEAN(5, "bool"),
+    CHARACTER(6, "char"),
+    STRING(7, "string"),
+    FUNCTION(8, "fun"),
+    RETURN(9, "return");
 
     private final int value;
     private final String symbol;

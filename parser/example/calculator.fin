@@ -1,0 +1,7 @@
+fun sum(a, b) {
+    return a + b;
+}
+
+let value = sum(2, 4);
+
+println(value);

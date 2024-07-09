@@ -30,15 +30,21 @@ public final class LexerImpl implements Lexer {
             return new EndOfFileToken();
         }
         char currentChar = text.charAt(position);
-        if (Character.isWhitespace(currentChar)) {
+        if (CharUtil.isWhitespace(currentChar)) {
             skipWhitespace();
             return nextToken();
         }
-        if (Character.isDigit(currentChar)) {
+        if (CharUtil.charactersEqual('"', currentChar)) {
+            return consumeString();
+        }
+        if (CharUtil.charactersEqual('\'', currentChar)) {
+            return consumeChar();
+        }
+        if (CharUtil.isDigit(currentChar)) {
             return consumeNumber();
         }
-        if (Character.isLetter(currentChar)) {
-            return consumeIdentifier();
+        if (CharUtil.isLetter(currentChar)) {
+            return inferTokenTypeAndConsume();
         }
         if (CharUtil.isOperator(currentChar)) {
             return consumeOperator();
@@ -58,29 +64,18 @@ public final class LexerImpl implements Lexer {
     }
 
     private void skipWhitespace() {
-        while (position < length && Character.isWhitespace(text.charAt(position))) {
+        while (position < length && CharUtil.isWhitespace(text.charAt(position))) {
             position++;
         }
     }
 
     private Token consumeNumber() {
         int start = position;
-        while (position < length && Character.isDigit(text.charAt(position))) {
+        while (position < length && (CharUtil.isDigit(text.charAt(position)) || Character.valueOf(text.charAt(position)).equals('.'))) {
             position++;
         }
-        return new LiteralToken(text.substring(start, position), LiteralType.INTEGER);
-    }
-
-    private Token consumeIdentifier() {
-        int start = position;
-        while (position < length && Character.isLetterOrDigit(text.charAt(position))) {
-            position++;
-        }
-        String t = text.substring(start, position);
-        if (KeywordType.isKeyword(t)) {
-            return new KeywordToken(KeywordType.getType(t));
-        }
-        return new IdentifierToken(t);
+        String t = createSubstring(start, position);
+        return new LiteralToken(t, LiteralType.isNumberInteger(t) ? LiteralType.INTEGER : LiteralType.FLOATING);
     }
 
     private Token consumeOperator() {
@@ -88,8 +83,7 @@ public final class LexerImpl implements Lexer {
         while (position < length && CharUtil.isOperator(text.charAt(position))) {
             position++;
         }
-        String operator = text.substring(start, position);
-        return new OperatorToken(OperatorType.getOperatorType(operator));
+        return new OperatorToken(OperatorType.getOperatorType(createSubstring(start, position)));
     }
 
     private Token consumeSeparator() {
@@ -97,7 +91,45 @@ public final class LexerImpl implements Lexer {
         while (position < length && CharUtil.isSeparator(text.charAt(position))) {
             position++;
         }
-        return new SeparatorToken(SeparatorType.getSeparatorType(text.substring(start, position)));
+        return new SeparatorToken(SeparatorType.getSeparatorType(createSubstring(start, position)));
+    }
+
+    private Token consumeString() {
+        int start = position;
+        while (position < length && (CharUtil.isLetter(text.charAt(position)) || CharUtil.charactersEqual(text.charAt(position), '"'))) {
+            position++;
+        }
+        return new LiteralToken(createSubstring(start, position), LiteralType.STRING);
+    }
+
+    private Token consumeChar() {
+        int start = position;
+        while (position < length && (CharUtil.isLetter(text.charAt(position)) || CharUtil.charactersEqual(text.charAt(position), '\''))) {
+            position++;
+        }
+        return new LiteralToken(createSubstring(start, position), LiteralType.CHARACTER);
+    }
+
+    private Token inferTokenTypeAndConsume() {
+        int start = position;
+        while (position < length && CharUtil.isLetterOrDigit(text.charAt(position))) {
+            position++;
+        }
+        String t = createSubstring(start, position);
+        if (KeywordType.isKeyword(t)) {
+            return new KeywordToken(KeywordType.getType(t));
+        }
+        if (LiteralType.isNullLiteral(t)) {
+            return new LiteralToken("null", LiteralType.NULL);
+        }
+        if (LiteralType.isBooleanLiteral(t)) {
+            return new LiteralToken(t, LiteralType.BOOLEAN);
+        }
+        return new IdentifierToken(t);
+    }
+
+    private String createSubstring(int start, int position) {
+        return text.substring(start, position);
     }
 
 }

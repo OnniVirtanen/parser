@@ -26,13 +26,21 @@ public final class CharUtil {
         return Character.isLetter(character);
     }
 
-    public static boolean isSeparator(char currentChar) {
+    public static boolean isSeparator(char character) {
         for (SeparatorType type : SeparatorType.values()) {
-            if (Character.valueOf(currentChar).equals((type.getSymbol().charAt(0)))) {
+            if (Character.valueOf(character).equals((type.getSymbol().charAt(0)))) {
                 return true;
             }
         }
         return false;
+    }
+
+    public static boolean isLetterOrDigit(char character) {
+        return Character.isLetterOrDigit(character);
+    }
+
+    public static boolean charactersEqual(char character1, char character2) {
+        return character1 == character2;
     }
 
 }

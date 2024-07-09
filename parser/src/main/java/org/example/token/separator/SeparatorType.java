@@ -1,17 +1,18 @@
 package org.example.token.separator;
 
 import org.example.token.InnerTokenType;
-import org.example.token.operator.OperatorType;
 
 public enum SeparatorType implements InnerTokenType<SeparatorType> {
     SEMICOLON(0, ";"),
     COMMA(1, ","),
-    LEFT_PARENTHESIS(2, "("), // (
+    LEFT_PARENTHESIS(2, "("),
     RIGHT_PARENTHESIS(3, ")"),
-    LEFT_BRACKET(4, "["), // [
+    LEFT_BRACKET(4, "["),
     RIGHT_BRACKET(5, "]"),
-    PERIOD(6, "."),
-    COLON(7, ":");
+    LEFT_CURLY_BRACKET(6, "{"),
+    RIGHT_CURLY_BRACKET(7, "}"),
+    PERIOD(8, "."),
+    COLON(9, ":");
 
     private final int value;
     private final String symbol;

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        String text = "if x != 100";
+        String text = "if x == 100";
         Lexer lexer = new LexerImpl(text);
         List<Token> tokens = new ArrayList<>();
         while (lexer.peek().getType() != TokenType.EOF) {

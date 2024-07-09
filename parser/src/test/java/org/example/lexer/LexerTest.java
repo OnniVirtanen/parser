@@ -1,6 +1,11 @@
 package org.example.lexer;
 
+import org.example.token.Token;
 import org.example.token.TokenType;
+import org.example.token.literal.LiteralToken;
+import org.example.token.literal.LiteralType;
+import org.example.token.separator.SeparatorToken;
+import org.example.token.separator.SeparatorType;
 import org.junit.jupiter.api.Test;
 
 public class LexerTest {
@@ -25,7 +30,10 @@ public class LexerTest {
     public void canLexLiteral() {
         String input = "4";
         lexer = new LexerImpl(input);
-        assert lexer.nextToken().getType() == TokenType.LITERAL;
+        Token token = lexer.nextToken();
+        assert token.getType() == TokenType.LITERAL;
+        LiteralToken literalToken = (LiteralToken) token;
+        assert literalToken.getLiteralType() == LiteralType.INTEGER;
     }
 
     @Test
@@ -39,7 +47,10 @@ public class LexerTest {
     public void canLexSeparator() {
         String input = "(";
         lexer = new LexerImpl(input);
-        assert lexer.nextToken().getType() == TokenType.SEPARATOR;
+        Token token = lexer.nextToken();
+        assert token.getType() == TokenType.SEPARATOR;
+        SeparatorToken separatorToken = (SeparatorToken) token;
+        assert separatorToken.getSeparatorType() == SeparatorType.LEFT_PARENTHESIS;
     }
 
     @Test

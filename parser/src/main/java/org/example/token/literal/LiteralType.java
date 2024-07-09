@@ -16,6 +16,23 @@ public enum LiteralType implements InnerTokenType<LiteralType> {
         this.value = value;
     }
 
+    public static boolean isNumberInteger(String number) {
+        try {
+            Integer.parseInt(number);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isNullLiteral(String text) {
+        return text.equals("null");
+    }
+
+    public static boolean isBooleanLiteral(String text) {
+        return "true".equals(text) || "false".equals(text);
+    }
+
     @Override
     public int getValue() {
         return value;
