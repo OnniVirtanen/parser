@@ -6,7 +6,8 @@ public enum TokenType {
     OPERATOR(2),
     SEPARATOR(3),
     LITERAL(4),
-    EOF(5); // Informs to lexer end of file
+    EOF(5),
+    UNKNOWN(6);
 
     private final int value;
 

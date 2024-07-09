@@ -1,4 +1,4 @@
-package org.example.token.eof;
+package org.example.token;
 
 import org.example.token.Token;
 import org.example.token.TokenType;

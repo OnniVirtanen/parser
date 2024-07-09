@@ -1,7 +1,8 @@
 package org.example.lexer;
 
 import org.example.token.Token;
-import org.example.token.eof.EndOfFileToken;
+import org.example.token.EndOfFileToken;
+import org.example.token.UnknownToken;
 import org.example.token.identifier.IdentifierToken;
 import org.example.token.keyword.KeywordToken;
 import org.example.token.keyword.KeywordType;
@@ -52,7 +53,7 @@ public final class LexerImpl implements Lexer {
         if (CharUtil.isSeparator(currentChar)) {
             return consumeSeparator();
         }
-        return null;
+        return new UnknownToken();
     }
 
     @Override
@@ -97,17 +98,25 @@ public final class LexerImpl implements Lexer {
     private Token consumeString() {
         int start = position;
         while (position < length && (CharUtil.isLetter(text.charAt(position)) || CharUtil.charactersEqual(text.charAt(position), '"'))) {
+            if (CharUtil.charactersEqual('\\', text.charAt(position))) {
+                position++; // skip the escape character
+            }
             position++;
         }
-        return new LiteralToken(createSubstring(start, position), LiteralType.STRING);
+        position++; // skip the closing quote
+        return new LiteralToken(createSubstring(start, position - 1), LiteralType.STRING);
     }
 
     private Token consumeChar() {
         int start = position;
         while (position < length && (CharUtil.isLetter(text.charAt(position)) || CharUtil.charactersEqual(text.charAt(position), '\''))) {
+            if (CharUtil.charactersEqual('\\', text.charAt(position))) {
+                position++; // skip the escape character
+            }
             position++;
         }
-        return new LiteralToken(createSubstring(start, position), LiteralType.CHARACTER);
+        position++; // skip the closing quote
+        return new LiteralToken(createSubstring(start, position - 1), LiteralType.CHARACTER);
     }
 
     private Token inferTokenTypeAndConsume() {
