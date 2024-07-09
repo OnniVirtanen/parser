@@ -4,8 +4,8 @@
 
 **example code in calculator.fin**
 
-```c
-fun sum(a: int, b: int): int {
+```
+fun \textcolor{red}{red}sum(a: int, b: int): int {
     return a + b;
 }
 
