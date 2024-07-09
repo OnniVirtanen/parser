@@ -1,5 +1,6 @@
 package org.example.lexer;
 
+import org.example.token.CharUtil;
 import org.example.token.Token;
 import org.example.token.EndOfFileToken;
 import org.example.token.UnknownToken;
@@ -89,10 +90,8 @@ public final class LexerImpl implements Lexer {
 
     private Token consumeSeparator() {
         int start = position;
-        while (position < length && CharUtil.isSeparator(text.charAt(position))) {
-            position++;
-        }
-        return new SeparatorToken(SeparatorType.getSeparatorType(createSubstring(start, position)));
+        position++;
+        return new SeparatorToken(SeparatorType.getSeparatorType(createSubstring(start, start + 1)));
     }
 
     private Token consumeString() {

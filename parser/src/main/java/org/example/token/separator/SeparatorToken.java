@@ -16,4 +16,11 @@ public final class SeparatorToken extends Token {
         return separatorType;
     }
 
+    @Override
+    public String toString() {
+        return "SeparatorToken{" +
+                "separatorType=" + separatorType +
+                '}';
+    }
+
 }

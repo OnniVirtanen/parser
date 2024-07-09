@@ -16,4 +16,11 @@ public final class KeywordToken extends Token {
         return keywordType;
     }
 
+    @Override
+    public String toString() {
+        return "KeywordToken{" +
+                "keywordType=" + keywordType +
+                '}';
+    }
+
 }

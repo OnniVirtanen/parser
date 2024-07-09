@@ -1,4 +1,4 @@
-package org.example.lexer;
+package org.example.token;
 
 import org.example.token.operator.OperatorType;
 import org.example.token.separator.SeparatorType;

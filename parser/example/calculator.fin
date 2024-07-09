@@ -1,7 +1,10 @@
-fun sum(a, b) {
+fun sumInt(a, b) {
     return a + b;
 }
 
-let value = sum(2, 4);
+fun sumFloat(a, b) {
+    return a + b;
+}
 
-println(value);
+int value1 = sumInt(2, 4);
+float value2 = sumFloat(3.72, 3.41);

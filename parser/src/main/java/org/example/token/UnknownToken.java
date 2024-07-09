@@ -6,4 +6,9 @@ public class UnknownToken extends Token {
         super(TokenType.UNKNOWN);
     }
 
+    @Override
+    public String toString() {
+        return "UnknownToken{}";
+    }
+
 }

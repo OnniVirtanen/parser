@@ -16,4 +16,11 @@ public final class IdentifierToken extends Token {
         return value;
     }
 
+    @Override
+    public String toString() {
+        return "IdentifierToken{" +
+                "value='" + value + '\'' +
+                '}';
+    }
+    
 }

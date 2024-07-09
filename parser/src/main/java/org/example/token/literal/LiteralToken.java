@@ -22,4 +22,12 @@ public final class LiteralToken extends Token {
         return literalType;
     }
 
+    @Override
+    public String toString() {
+        return "LiteralToken{" +
+                "value='" + value + '\'' +
+                ", literalType=" + literalType +
+                '}';
+    }
+
 }

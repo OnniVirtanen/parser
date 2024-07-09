@@ -12,4 +12,7 @@ public abstract class Token {
         return this.type;
     }
 
+    @Override
+    public abstract String toString();
+
 }
