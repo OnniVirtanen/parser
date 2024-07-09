@@ -9,6 +9,8 @@ import org.example.token.literal.LiteralToken;
 import org.example.token.literal.LiteralType;
 import org.example.token.operator.OperatorToken;
 import org.example.token.operator.OperatorType;
+import org.example.token.separator.SeparatorToken;
+import org.example.token.separator.SeparatorType;
 
 public final class LexerImpl implements Lexer {
 
@@ -40,6 +42,9 @@ public final class LexerImpl implements Lexer {
         }
         if (CharUtil.isOperator(currentChar)) {
             return consumeOperator();
+        }
+        if (CharUtil.isSeparator(currentChar)) {
+            return consumeSeparator();
         }
         return null;
     }
@@ -85,6 +90,14 @@ public final class LexerImpl implements Lexer {
         }
         String operator = text.substring(start, position);
         return new OperatorToken(OperatorType.getOperatorType(operator));
+    }
+
+    private Token consumeSeparator() {
+        int start = position;
+        while (position < length && CharUtil.isSeparator(text.charAt(position))) {
+            position++;
+        }
+        return new SeparatorToken(SeparatorType.getSeparatorType(text.substring(start, position)));
     }
 
 }
