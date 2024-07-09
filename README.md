@@ -5,7 +5,7 @@
 **example code in calculator.fin**
 
 ```
-fun \textcolor{red}{red}sum(a: int, b: int): int {
+fun sum(a: int, b: int): int {
     return a + b;
 }
 
