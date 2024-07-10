@@ -3,6 +3,7 @@ package org.example.lexer;
 import org.example.lexer.token.CharUtil;
 import org.example.lexer.token.Token;
 import org.example.lexer.token.EndOfFileToken;
+import org.example.lexer.token.TokenType;
 import org.example.lexer.token.UnknownToken;
 import org.example.lexer.token.identifier.IdentifierToken;
 import org.example.lexer.token.keyword.KeywordToken;
@@ -13,6 +14,9 @@ import org.example.lexer.token.operator.OperatorToken;
 import org.example.lexer.token.operator.OperatorType;
 import org.example.lexer.token.separator.SeparatorToken;
 import org.example.lexer.token.separator.SeparatorType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class LexerImpl implements Lexer {
 
@@ -63,6 +67,15 @@ public final class LexerImpl implements Lexer {
         Token token = nextToken();
         position = savedPosition;
         return token;
+    }
+
+    @Override
+    public List<Token> run() {
+        List<Token> tokens = new ArrayList<>();
+        while (peek().getType() != TokenType.EOF) {
+            tokens.add(nextToken());
+        }
+        return tokens;
     }
 
     private void skipWhitespace() {

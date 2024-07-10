@@ -1,6 +1,6 @@
 package org.example.parser.ast.expression;
 
-public final class LiteralExpression extends Expression {
+public class LiteralExpression extends Expression {
     private final String value;
 
     public LiteralExpression(String value) {
