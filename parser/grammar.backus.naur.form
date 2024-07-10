@@ -28,7 +28,7 @@
 <argument_list> ::= <expression> { "," <expression> }
 
 <binary_expression> ::= <expression> <operator> <expression>
-git 
+git
 <operator> ::= "+"
              | "-"
              | "*"
