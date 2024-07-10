@@ -3,6 +3,7 @@
 <statement_list> ::= <statement> {<statement>}
 
 <statement> ::= <function_statement> | <variable_statement> | <expression_statement> | <return_statement>
+                    | <if_statement> | <else_statement> | <while_statement>
 
 <function_statement> ::= "fun" <identifier> "(" <parameter_list> ")" ":" <type> "{" <statement_list> "}"
 
@@ -15,6 +16,10 @@
 
 <return_statement> ::= "return" <expression> ";"
 
+<if_statement> ::= "if" "(" <expression> ")" "{" <statement_list> "}" [<else_statement>]
+<else_statement> ::= "else" "{" <statement_list> "}"
+<while_statement> ::= "while" "(" <expression> ")" "{" <statement_list> "}"
+
 <expression> ::= <literal>
               | <identifier>
               | <identifier> "(" <argument_list> ")"
@@ -23,7 +28,7 @@
 <argument_list> ::= <expression> { "," <expression> }
 
 <binary_expression> ::= <expression> <operator> <expression>
-
+git 
 <operator> ::= "+"
              | "-"
              | "*"
