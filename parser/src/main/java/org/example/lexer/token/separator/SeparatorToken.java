@@ -1,7 +1,7 @@
-package org.example.token.separator;
+package org.example.lexer.token.separator;
 
-import org.example.token.Token;
-import org.example.token.TokenType;
+import org.example.lexer.token.Token;
+import org.example.lexer.token.TokenType;
 
 public final class SeparatorToken extends Token {
 

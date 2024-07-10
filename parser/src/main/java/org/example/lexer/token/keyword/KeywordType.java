@@ -1,6 +1,6 @@
-package org.example.token.keyword;
+package org.example.lexer.token.keyword;
 
-import org.example.token.InnerTokenType;
+import org.example.lexer.token.InnerTokenType;
 
 public enum KeywordType implements InnerTokenType<KeywordType> {
     IF(0, "if"),
@@ -12,7 +12,8 @@ public enum KeywordType implements InnerTokenType<KeywordType> {
     CHARACTER(6, "char"),
     STRING(7, "string"),
     FUNCTION(8, "fun"),
-    RETURN(9, "return");
+    RETURN(9, "return"),
+    VOID(10, "void");
 
     private final int value;
     private final String symbol;

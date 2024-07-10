@@ -1,7 +1,7 @@
-package org.example.token;
+package org.example.lexer.token;
 
-import org.example.token.operator.OperatorType;
-import org.example.token.separator.SeparatorType;
+import org.example.lexer.token.operator.OperatorType;
+import org.example.lexer.token.separator.SeparatorType;
 
 public final class CharUtil {
 

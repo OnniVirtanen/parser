@@ -1,18 +1,18 @@
 package org.example.lexer;
 
-import org.example.token.CharUtil;
-import org.example.token.Token;
-import org.example.token.EndOfFileToken;
-import org.example.token.UnknownToken;
-import org.example.token.identifier.IdentifierToken;
-import org.example.token.keyword.KeywordToken;
-import org.example.token.keyword.KeywordType;
-import org.example.token.literal.LiteralToken;
-import org.example.token.literal.LiteralType;
-import org.example.token.operator.OperatorToken;
-import org.example.token.operator.OperatorType;
-import org.example.token.separator.SeparatorToken;
-import org.example.token.separator.SeparatorType;
+import org.example.lexer.token.CharUtil;
+import org.example.lexer.token.Token;
+import org.example.lexer.token.EndOfFileToken;
+import org.example.lexer.token.UnknownToken;
+import org.example.lexer.token.identifier.IdentifierToken;
+import org.example.lexer.token.keyword.KeywordToken;
+import org.example.lexer.token.keyword.KeywordType;
+import org.example.lexer.token.literal.LiteralToken;
+import org.example.lexer.token.literal.LiteralType;
+import org.example.lexer.token.operator.OperatorToken;
+import org.example.lexer.token.operator.OperatorType;
+import org.example.lexer.token.separator.SeparatorToken;
+import org.example.lexer.token.separator.SeparatorType;
 
 public final class LexerImpl implements Lexer {
 

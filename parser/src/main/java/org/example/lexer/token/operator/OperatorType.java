@@ -1,6 +1,6 @@
-package org.example.token.operator;
+package org.example.lexer.token.operator;
 
-import org.example.token.InnerTokenType;
+import org.example.lexer.token.InnerTokenType;
 
 public enum OperatorType implements InnerTokenType<OperatorType> {
     ADDITION(0, "+"),

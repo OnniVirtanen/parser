@@ -1,6 +1,6 @@
-package org.example.token.literal;
+package org.example.lexer.token.literal;
 
-import org.example.token.InnerTokenType;
+import org.example.lexer.token.InnerTokenType;
 
 public enum LiteralType implements InnerTokenType<LiteralType> {
     INTEGER(0),

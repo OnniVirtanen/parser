@@ -1,0 +1,58 @@
+<program> ::= <statement_list>
+
+<statement_list> ::= <statement> {<statement>}
+
+<statement> ::= <function_statement> | <variable_statement> | <expression_statement> | <return_statement>
+
+<function_statement> ::= "fun" <identifier> "(" <parameter_list> ")" ":" <type> "{" <statement_list> "}"
+
+<parameter_list> ::= <parameter> { "," <parameter> }
+<parameter> ::= <type> ":" <identifier>
+
+<variable_statement> ::= <type> <identifier> "=" <expression> ";"
+
+<expression_statement> ::= <expression> ";"
+
+<return_statement> ::= "return" <expression> ";"
+
+<expression> ::= <literal>
+              | <identifier>
+              | <identifier> "(" <argument_list> ")"
+              | <binary_expression>
+
+<argument_list> ::= <expression> { "," <expression> }
+
+<binary_expression> ::= <expression> <operator> <expression>
+
+<operator> ::= "+"
+             | "-"
+             | "*"
+             | "/"
+             | "%"
+             | "&&"
+             | "||"
+             | "!"
+             | "=="
+             | "!="
+             | "<"
+             | ">"
+             | "<="
+             | ">="
+             | "="
+             | "+="
+             | "-="
+             | "*="
+             | "/="
+             | "%="
+
+<type> ::= "int" | "float" | "string" | "char" | "bool" | "void"
+
+<identifier> ::= [a-zA-Z_][a-zA-Z0-9_]*
+<literal> ::= <integer_literal> | <float_literal> | <string_literal> | <boolean_literal> | <character_literal> | <null_literal>
+
+<integer_literal> ::= [0-9]+
+<float_literal> ::= [0-9]+"."[0-9]+
+<string_literal> ::= '"'[^"]*'"'
+<boolean_literal> ::= "true" | "false"
+<character_literal> ::= "'"[^']"'"
+<null_literal> ::= "null"

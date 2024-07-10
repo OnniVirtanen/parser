@@ -1,4 +1,4 @@
-package org.example.token;
+package org.example.lexer.token;
 
 public final class EndOfFileToken extends Token {
 

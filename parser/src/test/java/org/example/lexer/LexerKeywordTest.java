@@ -1,9 +1,9 @@
 package org.example.lexer;
 
-import org.example.token.Token;
-import org.example.token.TokenType;
-import org.example.token.keyword.KeywordToken;
-import org.example.token.keyword.KeywordType;
+import org.example.lexer.token.Token;
+import org.example.lexer.token.TokenType;
+import org.example.lexer.token.keyword.KeywordToken;
+import org.example.lexer.token.keyword.KeywordType;
 import org.junit.jupiter.api.Test;
 
 public class LexerKeywordTest {
@@ -108,6 +108,16 @@ public class LexerKeywordTest {
         assert token.getType() == TokenType.KEYWORD;
         KeywordToken keywordToken = (KeywordToken) token;
         assert keywordToken.getKeywordType() == KeywordType.RETURN;
+    }
+
+    @Test
+    public void canLexVoid() {
+        String input = "void";
+        lexer = new LexerImpl(input);
+        Token token = lexer.nextToken();
+        assert token.getType() == TokenType.KEYWORD;
+        KeywordToken keywordToken = (KeywordToken) token;
+        assert keywordToken.getKeywordType() == KeywordType.VOID;
     }
 
 }

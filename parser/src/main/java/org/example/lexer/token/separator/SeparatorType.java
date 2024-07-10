@@ -1,6 +1,6 @@
-package org.example.token.separator;
+package org.example.lexer.token.separator;
 
-import org.example.token.InnerTokenType;
+import org.example.lexer.token.InnerTokenType;
 
 public enum SeparatorType implements InnerTokenType<SeparatorType> {
     SEMICOLON(0, ";"),

@@ -1,7 +1,7 @@
-package org.example.token.operator;
+package org.example.lexer.token.operator;
 
-import org.example.token.Token;
-import org.example.token.TokenType;
+import org.example.lexer.token.Token;
+import org.example.lexer.token.TokenType;
 
 public final class OperatorToken extends Token {
 

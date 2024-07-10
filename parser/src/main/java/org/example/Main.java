@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.lexer.InputReader;
 import org.example.lexer.Lexer;
 import org.example.lexer.LexerDebugPrinter;
 import org.example.lexer.LexerImpl;

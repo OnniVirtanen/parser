@@ -1,11 +1,11 @@
 package org.example.lexer;
 
-import org.example.token.Token;
-import org.example.token.TokenType;
-import org.example.token.literal.LiteralToken;
-import org.example.token.literal.LiteralType;
-import org.example.token.separator.SeparatorToken;
-import org.example.token.separator.SeparatorType;
+import org.example.lexer.token.Token;
+import org.example.lexer.token.TokenType;
+import org.example.lexer.token.literal.LiteralToken;
+import org.example.lexer.token.literal.LiteralType;
+import org.example.lexer.token.separator.SeparatorToken;
+import org.example.lexer.token.separator.SeparatorType;
 import org.junit.jupiter.api.Test;
 
 public class LexerTest {

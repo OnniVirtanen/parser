@@ -1,6 +1,6 @@
 package org.example.lexer;
 
-import org.example.token.Token;
+import org.example.lexer.token.Token;
 
 public interface Lexer {
 

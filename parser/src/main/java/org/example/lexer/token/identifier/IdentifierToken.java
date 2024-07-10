@@ -1,7 +1,7 @@
-package org.example.token.identifier;
+package org.example.lexer.token.identifier;
 
-import org.example.token.Token;
-import org.example.token.TokenType;
+import org.example.lexer.token.Token;
+import org.example.lexer.token.TokenType;
 
 public final class IdentifierToken extends Token {
 
