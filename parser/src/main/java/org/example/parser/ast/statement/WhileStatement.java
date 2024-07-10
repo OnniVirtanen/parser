@@ -1,12 +1,15 @@
 package org.example.parser.ast.statement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.example.parser.ast.ASTVisitor;
 import org.example.parser.ast.expression.Expression;
 
 import java.util.List;
 
 public final class WhileStatement extends Statement {
+    @JsonProperty("condition")
     private final Expression condition;
+    @JsonProperty("body")
     private final List<Statement> body;
 
     public WhileStatement(Expression condition, List<Statement> body) {

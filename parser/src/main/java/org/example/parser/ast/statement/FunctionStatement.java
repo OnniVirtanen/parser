@@ -1,14 +1,20 @@
 package org.example.parser.ast.statement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.example.parser.ast.ASTVisitor;
 import org.example.parser.ast.parameter.Parameter;
 
 import java.util.List;
 
 public final class FunctionStatement extends Statement {
+    @JsonProperty("identifier")
     private final String identifier;
+    @JsonProperty("parameters")
     private final List<Parameter> parameters;
+    @JsonProperty("returnType")
     private final String returnType;
+    @JsonProperty("body")
     private final List<Statement> body;
 
     public FunctionStatement(String identifier, List<Parameter> parameters, String returnType, List<Statement> body) {

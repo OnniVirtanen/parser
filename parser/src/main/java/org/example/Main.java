@@ -13,7 +13,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String input = InputReader.readFile("example/conditional.fin");
+        String input = InputReader.readFile("example/calculator.fin");
         Lexer lexer = new LexerImpl(input);
         //LexerDebugPrinter printer = new LexerDebugPrinter(lexer);
         //printer.run();

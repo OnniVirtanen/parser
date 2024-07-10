@@ -1,9 +1,7 @@
 package org.example.lexer;
 
 import org.example.lexer.token.Token;
-import org.example.lexer.token.TokenType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public final class LexerDebugPrinter {
@@ -15,10 +13,7 @@ public final class LexerDebugPrinter {
     }
 
     public void run() {
-        List<Token> tokens = new ArrayList<>();
-        while (lexer.peek().getType() != TokenType.EOF) {
-            tokens.add(lexer.nextToken());
-        }
+        List<Token> tokens = lexer.run();
         for (Token token : tokens) {
             System.out.println(token.toString());
         }

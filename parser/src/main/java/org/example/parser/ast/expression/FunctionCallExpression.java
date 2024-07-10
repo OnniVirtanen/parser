@@ -1,11 +1,14 @@
 package org.example.parser.ast.expression;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.example.parser.ast.ASTVisitor;
 
 import java.util.List;
 
 public final class FunctionCallExpression extends Expression {
+    @JsonProperty("identifier")
     private final String identifier;
+    @JsonProperty("arguments")
     private final List<Expression> arguments;
 
     public FunctionCallExpression(String identifier, List<Expression> arguments) {

@@ -1,9 +1,11 @@
 package org.example.parser.ast.statement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.example.parser.ast.ASTVisitor;
 import org.example.parser.ast.expression.Expression;
 
 public final class ReturnStatement extends Statement {
+    @JsonProperty("expression")
     private final Expression expression;
 
     public ReturnStatement(Expression expression) {

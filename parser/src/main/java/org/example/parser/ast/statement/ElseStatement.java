@@ -1,10 +1,12 @@
 package org.example.parser.ast.statement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.example.parser.ast.ASTVisitor;
 
 import java.util.List;
 
 public final class ElseStatement extends Statement {
+    @JsonProperty("body")
     private final List<Statement> body;
 
     public ElseStatement(List<Statement> body) {
