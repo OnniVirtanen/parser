@@ -16,4 +16,8 @@ public final class Program {
         return statementList;
     }
 
+    public void accept(ASTVisitor visitor) {
+        visitor.visit(this);
+    }
+
 }

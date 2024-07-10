@@ -1,5 +1,7 @@
 package org.example.parser.ast.expression;
 
+import org.example.parser.ast.ASTVisitor;
+
 public final class IdentifierExpression extends Expression {
     private final String identifier;
 
@@ -9,6 +11,11 @@ public final class IdentifierExpression extends Expression {
 
     public String getIdentifier() {
         return identifier;
+    }
+
+    @Override
+    public void accept(ASTVisitor visitor) {
+        visitor.visit(this);
     }
 
 }

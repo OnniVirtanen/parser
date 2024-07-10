@@ -1,5 +1,7 @@
 package org.example.parser.ast.expression;
 
+import org.example.parser.ast.ASTVisitor;
+
 import java.util.List;
 
 public final class FunctionCallExpression extends Expression {
@@ -17,6 +19,11 @@ public final class FunctionCallExpression extends Expression {
 
     public List<Expression> getArguments() {
         return arguments;
+    }
+
+    @Override
+    public void accept(ASTVisitor visitor) {
+        visitor.visit(this);
     }
 
 }

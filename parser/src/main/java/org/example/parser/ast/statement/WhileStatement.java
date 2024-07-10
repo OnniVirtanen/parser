@@ -1,5 +1,6 @@
 package org.example.parser.ast.statement;
 
+import org.example.parser.ast.ASTVisitor;
 import org.example.parser.ast.expression.Expression;
 
 import java.util.List;
@@ -19,6 +20,11 @@ public final class WhileStatement extends Statement {
 
     public List<Statement> getBody() {
         return body;
+    }
+
+    @Override
+    public void accept(ASTVisitor visitor) {
+        visitor.visit(this);
     }
 
 }

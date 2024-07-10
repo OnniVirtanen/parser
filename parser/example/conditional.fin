@@ -1,0 +1,5 @@
+fun isTrue(a: int): bool {
+    return a != 0;
+}
+
+bool value = isTrue(1);

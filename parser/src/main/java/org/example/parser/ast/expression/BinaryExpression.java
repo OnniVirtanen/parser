@@ -1,5 +1,7 @@
 package org.example.parser.ast.expression;
 
+import org.example.parser.ast.ASTVisitor;
+
 public class BinaryExpression extends Expression {
     private final Expression left;
     private final String operator;
@@ -21,6 +23,11 @@ public class BinaryExpression extends Expression {
 
     public Expression getRight() {
         return right;
+    }
+
+    @Override
+    public void accept(ASTVisitor visitor) {
+        visitor.visit(this);
     }
 
 }
