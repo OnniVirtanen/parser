@@ -12,4 +12,8 @@ public final class Program {
         this.statementList = statementList;
     }
 
+    public List<Statement> getStatementList() {
+        return statementList;
+    }
+
 }

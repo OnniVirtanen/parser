@@ -171,6 +171,43 @@ public class ParserImpl implements Parser {
     }
 
     private Expression parseExpression() {
+        return parseBinaryExpression(0); // Start with the lowest precedence
+    }
+
+    private Expression parseBinaryExpression(int precedence) {
+        Expression left = parsePrimaryExpression();
+
+        while (true) {
+            Token token = tokens.get(pos);
+            if (!(token instanceof OperatorToken)) break;
+
+            OperatorToken operatorToken = (OperatorToken) token;
+            int tokenPrecedence = getPrecedence(operatorToken);
+            if (tokenPrecedence < precedence) break;
+
+            pos++; // Consume the operator
+            Expression right = parseBinaryExpression(tokenPrecedence + 1);
+            left = new BinaryExpression(left, operatorToken.getOperatorType().toString().toLowerCase(), right);
+        }
+
+        return left;
+    }
+
+    private int getPrecedence(OperatorToken operatorToken) {
+        // Define precedence values for operators
+        switch (operatorToken.getOperatorType()) {
+            case ADDITION:
+            case SUBTRACTION:
+                return 1;
+            case MULTIPLICATION:
+            case DIVISION:
+                return 2;
+            default:
+                return 0;
+        }
+    }
+
+    private Expression parsePrimaryExpression() {
         Token token = tokens.get(pos);
         if (token instanceof LiteralToken) {
             return parseLiteral();
@@ -185,14 +222,14 @@ public class ParserImpl implements Parser {
                 return new IdentifierExpression(identifier);
             }
         } else {
-            Expression left = parsePrimaryExpression();
-            if (tokens.get(pos) instanceof OperatorToken) {
-                String operator = matchOperatorType().toString().toLowerCase();
-                Expression right = parseExpression();
-                return new BinaryExpression(left, operator, right);
-            }
-            return left;
+            throw new RuntimeException("Unexpected token: " + token);
         }
+    }
+
+    private Expression parseLiteral() {
+        Token token = tokens.get(pos);
+        match(token);
+        return new LiteralExpression(((LiteralToken) token).getValue());
     }
 
     private List<Expression> parseArgumentList() {
@@ -205,24 +242,6 @@ public class ParserImpl implements Parser {
             }
         }
         return arguments;
-    }
-
-    private Expression parseLiteral() {
-        Token token = tokens.get(pos);
-        match(token);
-        return new LiteralExpression(((LiteralToken) token).getValue());
-    }
-
-    private Expression parsePrimaryExpression() {
-        // Handle primary expressions (literals, identifiers, etc.)
-        Token token = tokens.get(pos);
-        if (token instanceof LiteralToken) {
-            return parseLiteral();
-        } else if (token instanceof IdentifierToken) {
-            return new IdentifierExpression(((IdentifierToken) token).getValue());
-        } else {
-            throw new RuntimeException("Unexpected token: " + token);
-        }
     }
 
     private Token match(TokenType expectedType) {

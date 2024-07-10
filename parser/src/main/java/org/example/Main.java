@@ -5,6 +5,7 @@ import org.example.lexer.Lexer;
 import org.example.lexer.LexerImpl;
 import org.example.lexer.token.Token;
 import org.example.parser.Parser;
+import org.example.parser.ParserDebugPrinter;
 import org.example.parser.ParserImpl;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class Main {
         //printer.run();
         List<Token> tokens = lexer.run();
         Parser parser = new ParserImpl(tokens);
-        parser.parse();
+        ParserDebugPrinter parserPrinter = new ParserDebugPrinter(parser);
+        parserPrinter.run();
     }
 }
